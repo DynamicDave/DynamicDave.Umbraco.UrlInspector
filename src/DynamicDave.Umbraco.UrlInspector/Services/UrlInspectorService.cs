@@ -77,7 +77,7 @@ public class UrlInspectorService(
             .Distinct(StringComparer.OrdinalIgnoreCase)
             .ToList();
 
-    public async Task<TestUrlResponse> TestAsync(string? rawUrl, IEnumerable<string> allowedAuthorities)
+    public async Task<TestUrlResponse> TestAsync(string? rawUrl, IEnumerable<string> allowedAuthorities, CancellationToken cancellationToken = default)
     {
         var trimmed = rawUrl?.Trim();
         if (trimmed is not null && trimmed.StartsWith('/') && !trimmed.StartsWith("//") && !trimmed.StartsWith("/\\") && BaseUri is null)
@@ -89,7 +89,8 @@ public class UrlInspectorService(
         if (!UrlTestPolicy.IsAllowed(parsed, allowedAuthorities))
             return new TestUrlResponse { Allowed = false, Message = "Host not allowed" };
 
-        using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(5));
+        using var cts = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
+        cts.CancelAfter(TimeSpan.FromSeconds(5));
         try
         {
             var client = httpClientFactory.CreateClient(Constants.HttpClientName);
@@ -101,6 +102,10 @@ public class UrlInspectorService(
                 StatusCode = (int)response.StatusCode,
                 Location = response.Headers.Location?.ToString(),
             };
+        }
+        catch (HttpRequestException ex) when (ex.InnerException is PrivateNetworkBlockedException)
+        {
+            return new TestUrlResponse { Allowed = false, Message = "Address not allowed" };
         }
         catch (Exception ex) when (ex is HttpRequestException or TaskCanceledException)
         {

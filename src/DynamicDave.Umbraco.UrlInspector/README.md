@@ -6,7 +6,7 @@ Adds a URLs & Redirects view to document workspaces: all URLs per culture, incom
 
     dotnet add package DynamicDave.Umbraco.UrlInspector
 
-Supported Umbraco version: **17.x** (net10.0). The backoffice UI is available in English, Dutch, German, French and Danish.
+Supported Umbraco version: **17.3 or later 17.x** (net10.0). Umbraco 18 is not supported by this version. The backoffice UI is available in English, Dutch, German, French and Danish.
 
 ## Configuration
 
@@ -28,9 +28,25 @@ Without it, relative URLs report "No base URL" until the application URL is know
 
 Set it explicitly. With `Umbraco:CMS:WebRouting:ApplicationUrlDetection` set to `EveryRequest` or `FirstRequest` the application host can be taken from the request Host header, which a client can influence (host header poisoning); that host feeds the tester's allow-list.
 
+### Internal network targets
+
+On a production server the tester refuses addresses on internal networks (localhost, `10.x`, `172.16-31.x`, `192.168.x`, link-local such as the cloud metadata address `169.254.169.254`, and their IPv6 equivalents). The check runs on the resolved IP address, so host names that point at internal addresses are refused too.
+
+In the `Development` environment internal addresses are allowed, because a local site usually runs on `localhost`. Override this in either direction with:
+
+```json
+{
+  "DynamicDave": {
+    "UrlInspector": {
+      "AllowPrivateNetworkTargets": true
+    }
+  }
+}
+```
+
 ## Security note
 
-The inspect, test and node-id endpoints require Content-section access but do not check per-document (start-node or permission) access. Any backoffice user with Content access can inspect or test any document key they know.
+The inspect and test endpoints require Content-section access plus Browse access to the document, the same check Umbraco uses for its own document endpoints (start nodes and user group permissions).
 
 ## Test behaviour and limitations
 

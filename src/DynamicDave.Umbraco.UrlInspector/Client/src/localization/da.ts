@@ -16,6 +16,7 @@ export default {
     copyFailed: 'Kunne ikke kopiere til udklipsholderen',
     testResult: 'Svar',
     notAllowed: 'Denne URL kan ikke testes',
+    privateAddress: 'Denne adresse ligger på et internt netværk og kan ikke testes',
     noBaseUrl: 'Denne URL kan ikke testes, fordi sidens basis-URL er ukendt',
     invalidUrl: 'Dette er ikke en gyldig URL',
     requestFailed: 'Forespørgslen mislykkedes',

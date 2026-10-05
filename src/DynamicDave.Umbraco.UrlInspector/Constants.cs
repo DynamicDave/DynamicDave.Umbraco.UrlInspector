@@ -4,5 +4,6 @@ namespace DynamicDave.Umbraco.UrlInspector
     {
         public const string ApiName = "dynamicdave-urlinspector";
         public const string HttpClientName = "DynamicDave.UrlInspector";
+        public const string AllowPrivateNetworkTargetsKey = "DynamicDave:UrlInspector:AllowPrivateNetworkTargets";
     }
 }

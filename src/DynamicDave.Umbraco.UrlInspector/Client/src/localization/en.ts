@@ -16,6 +16,7 @@ export default {
     copyFailed: 'Could not copy to clipboard',
     testResult: 'Response',
     notAllowed: 'This URL cannot be tested',
+    privateAddress: 'This address is on an internal network and cannot be tested',
     noBaseUrl: 'This URL cannot be tested because the site base URL is unknown',
     invalidUrl: 'This is not a valid URL',
     requestFailed: 'The request failed',
