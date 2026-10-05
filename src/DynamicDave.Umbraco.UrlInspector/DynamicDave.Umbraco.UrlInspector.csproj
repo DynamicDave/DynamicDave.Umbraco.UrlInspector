@@ -13,6 +13,9 @@
     <Product>DynamicDave.Umbraco.UrlInspector</Product>
     <Title>DynamicDave.Umbraco.UrlInspector</Title>
     <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageProjectUrl>https://github.com/DynamicDave/DynamicDave.Umbraco.UrlInspector</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/DynamicDave/DynamicDave.Umbraco.UrlInspector</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
 
