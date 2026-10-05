@@ -1,0 +1,13 @@
+{
+  "$schema": "https://marketplace.umbraco.com/umbraco-marketplace-schema.json",
+  "Screenshots": [
+    {
+      "ImageUrl": "https://raw.githubusercontent.com/DynamicDave/DynamicDave.Umbraco.UrlInspector/main/docs/screenshots/url-inspector-overview.png",
+      "Caption": "A document's URLs, incoming and outgoing redirects and canonical URL"
+    },
+    {
+      "ImageUrl": "https://raw.githubusercontent.com/DynamicDave/DynamicDave.Umbraco.UrlInspector/main/docs/screenshots/url-inspector-status-check.png",
+      "Caption": "Test a URL's status code without following redirects"
+    }
+  ]
+}
