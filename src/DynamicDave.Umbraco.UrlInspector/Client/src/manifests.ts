@@ -24,4 +24,28 @@ export const manifests: Array<UmbExtensionManifest> = [
     meta: { culture: 'nl' },
     js: () => import('./localization/nl.js'),
   },
+  {
+    type: 'localization',
+    alias: 'DynamicDave.UrlInspector.Localization.De',
+    name: 'URL Inspector German',
+    weight: -100,
+    meta: { culture: 'de' },
+    js: () => import('./localization/de.js'),
+  },
+  {
+    type: 'localization',
+    alias: 'DynamicDave.UrlInspector.Localization.Fr',
+    name: 'URL Inspector French',
+    weight: -100,
+    meta: { culture: 'fr' },
+    js: () => import('./localization/fr.js'),
+  },
+  {
+    type: 'localization',
+    alias: 'DynamicDave.UrlInspector.Localization.Da',
+    name: 'URL Inspector Danish',
+    weight: -100,
+    meta: { culture: 'da' },
+    js: () => import('./localization/da.js'),
+  },
 ];

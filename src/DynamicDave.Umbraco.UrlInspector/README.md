@@ -6,7 +6,7 @@ Adds a URLs & Redirects view to document workspaces: all URLs per culture, incom
 
     dotnet add package DynamicDave.Umbraco.UrlInspector
 
-Supported Umbraco version: **17.x** (net10.0). The backoffice UI is available in English and Dutch.
+Supported Umbraco version: **17.x** (net10.0). The backoffice UI is available in English, Dutch, German, French and Danish.
 
 ## Configuration
 
