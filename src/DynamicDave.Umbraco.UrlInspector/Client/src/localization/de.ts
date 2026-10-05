@@ -16,6 +16,7 @@ export default {
     copyFailed: 'Kopieren in die Zwischenablage fehlgeschlagen',
     testResult: 'Antwort',
     notAllowed: 'Diese URL kann nicht getestet werden',
+    privateAddress: 'Diese Adresse liegt in einem internen Netzwerk und kann nicht getestet werden',
     noBaseUrl: 'Diese URL kann nicht getestet werden, weil die Basis-URL der Website unbekannt ist',
     invalidUrl: 'Dies ist keine gültige URL',
     requestFailed: 'Die Anfrage ist fehlgeschlagen',

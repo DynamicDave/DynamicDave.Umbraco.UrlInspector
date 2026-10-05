@@ -2,6 +2,8 @@ namespace DynamicDave.Umbraco.UrlInspector.Services;
 
 internal static class UrlTestPolicy
 {
+    public const int MaxUrlLength = 2048;
+
     /// <summary>Lower-case host plus effective port (default ports filled in), e.g. "www.klant.nl:443".</summary>
     public static string AuthorityOf(Uri uri) => $"{uri.Host.ToLowerInvariant()}:{uri.Port}";
 
@@ -20,6 +22,7 @@ internal static class UrlTestPolicy
         target = null!;
         if (string.IsNullOrWhiteSpace(raw)) return false;
         raw = raw.Trim();
+        if (raw.Length > MaxUrlLength) return false;
 
         if (raw.StartsWith('/'))
         {

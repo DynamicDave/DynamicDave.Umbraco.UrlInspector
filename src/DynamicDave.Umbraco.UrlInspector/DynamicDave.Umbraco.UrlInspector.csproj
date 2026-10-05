@@ -16,6 +16,9 @@
     <PackageProjectUrl>https://github.com/DynamicDave/DynamicDave.Umbraco.UrlInspector</PackageProjectUrl>
     <RepositoryUrl>https://github.com/DynamicDave/DynamicDave.Umbraco.UrlInspector</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
+    <!-- Built against the minimum supported Umbraco version: its transitive advisories are resolved by the
+         Umbraco version of the site that installs the package, so only audit direct dependencies here. -->
+    <NuGetAuditMode>direct</NuGetAuditMode>
   </PropertyGroup>
 
 
@@ -28,7 +31,6 @@
     <PackageReference Include="Umbraco.Cms.Api.Common" />
     <PackageReference Include="Umbraco.Cms.Api.Management" />
     <PackageReference Include="Umbraco.Cms.Web.Common" />
-    <PackageReference Include="Umbraco.Cms.Web.Website" />
   </ItemGroup>
 
 

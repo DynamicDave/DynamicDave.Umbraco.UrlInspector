@@ -16,6 +16,7 @@ export default {
     copyFailed: 'Impossible de copier dans le presse-papiers',
     testResult: 'Réponse',
     notAllowed: 'Cette URL ne peut pas être testée',
+    privateAddress: 'Cette adresse se trouve sur un réseau interne et ne peut pas être testée',
     noBaseUrl: "Cette URL ne peut pas être testée car l'URL de base du site est inconnue",
     invalidUrl: "Ce n'est pas une URL valide",
     requestFailed: 'La requête a échoué',

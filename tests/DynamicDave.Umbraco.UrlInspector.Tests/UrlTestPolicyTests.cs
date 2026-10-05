@@ -21,6 +21,7 @@ public class UrlTestPolicyTests
     [Fact] public void Lookalike_suffix_is_denied() => Assert.False(UrlTestPolicy.IsAllowed(new Uri("https://www.klant.nl.evil.example/"), Hosts));
     [Fact] public void File_scheme_is_denied() => Assert.False(UrlTestPolicy.IsAllowed(new Uri("file:///c:/windows/win.ini"), Hosts));
     [Fact] public void Ftp_scheme_is_denied() => Assert.False(UrlTestPolicy.IsAllowed(new Uri("ftp://www.klant.nl/"), Hosts));
+    [Fact] public void Overlong_url_is_rejected() => Assert.False(UrlTestPolicy.TryResolveTarget("https://www.klant.nl/" + new string('a', UrlTestPolicy.MaxUrlLength), null, out _));
 
     private static readonly Uri Base = new("https://www.klant.nl/");
 

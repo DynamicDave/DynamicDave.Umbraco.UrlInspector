@@ -10,6 +10,7 @@ const TEST_MESSAGE_KEYS: Record<string, string> = {
   'No base URL': 'ddUrlInspector_noBaseUrl',
   'Invalid URL': 'ddUrlInspector_invalidUrl',
   'Host not allowed': 'ddUrlInspector_notAllowed',
+  'Address not allowed': 'ddUrlInspector_privateAddress',
   'Request failed': 'ddUrlInspector_requestFailed',
   'Timed out': 'ddUrlInspector_timedOut',
   'Request cancelled': 'ddUrlInspector_cancelled',

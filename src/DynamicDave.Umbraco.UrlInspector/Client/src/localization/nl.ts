@@ -16,6 +16,7 @@ export default {
     copyFailed: 'Kopiëren naar klembord is mislukt',
     testResult: 'Antwoord',
     notAllowed: 'Deze URL kan niet worden getest',
+    privateAddress: 'Dit adres ligt op een intern netwerk en kan niet worden getest',
     noBaseUrl: 'Deze URL kan niet worden getest omdat de basis-URL van de site onbekend is',
     invalidUrl: 'Dit is geen geldige URL',
     requestFailed: 'Het verzoek is mislukt',
