@@ -6,7 +6,7 @@ Adds a URLs & Redirects view to document workspaces: all URLs per culture, incom
 
     dotnet add package DynamicDave.Umbraco.UrlInspector
 
-Supported Umbraco version: **17.3 or later 17.x** (net10.0). Umbraco 18 is not supported by this version. The backoffice UI is available in English, Dutch, German, French and Danish.
+Supported Umbraco versions: **17.x and 18.x** (net10.0), tested on 17.0.0 and 18.2.1. The backoffice UI is available in English, Dutch, German, French and Danish.
 
 ## Configuration
 
@@ -24,7 +24,7 @@ Testing a relative URL (for example `/en/services/`) needs a base URL. Set the a
 }
 ```
 
-Without it, relative URLs report "No base URL" until the application URL is known.
+Without it, relative URLs report "No base URL" until the application URL is known. Umbraco 18 returns relative URLs more often than 17 (for URLs on the domain of the current request), so set it there in particular.
 
 Set it explicitly. With `Umbraco:CMS:WebRouting:ApplicationUrlDetection` set to `EveryRequest` or `FirstRequest` the application host can be taken from the request Host header, which a client can influence (host header poisoning); that host feeds the tester's allow-list.
 

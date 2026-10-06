@@ -1,11 +1,15 @@
 {
   "id": "DynamicDave.Umbraco.UrlInspector",
   "name": "DynamicDave.Umbraco.UrlInspector",
-  "version": "17.0.0",
+  "version": "18.0.0",
   "allowTelemetry": true,
+  "AuthorDetails": {
+    "Name": "Dynamic Dave",
+    "Url": "https://www.dynamicdave.nl/"
+  },
   "extensions": [
     {
-      "name": "Dynamic Dave Umbraco Url Inspector Bundle",
+      "name": "Url Inspector",
       "alias": "DynamicDave.Umbraco.UrlInspector.Bundle",
       "type": "bundle",
       "js": "/App_Plugins/DynamicDaveUmbracoUrlInspector/dynamic-dave-umbraco-url-inspector.js"
