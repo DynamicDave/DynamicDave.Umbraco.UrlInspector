@@ -48,6 +48,11 @@
     <ProjectReference Include="..\..\src\DynamicDave.Umbraco.UrlInspector\DynamicDave.Umbraco.UrlInspector.csproj" />
   </ItemGroup>
 
+  <!-- The package's Swagger document uses Swashbuckle, which Umbraco 18 no longer ships. -->
+  <ItemGroup Condition="!$(TestSiteUmbracoVersion.StartsWith('17.'))">
+    <Compile Remove="OpenApi\UrlInspectorOpenApiComposer.cs" />
+  </ItemGroup>
+
   <PropertyGroup>
     <!-- Remove RazorCompileOnBuild and RazorCompileOnPublish when not using ModelsMode InMemoryAuto -->
     <RazorCompileOnBuild>false</RazorCompileOnBuild>

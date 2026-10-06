@@ -1,5 +1,6 @@
 using DynamicDave.Umbraco.UrlInspector.Models;
 using Umbraco.Cms.Core.Hosting;
+using Umbraco.Cms.Core.Models;
 using Umbraco.Cms.Core.Routing;
 using Umbraco.Cms.Core.Services;
 
@@ -7,6 +8,7 @@ namespace DynamicDave.Umbraco.UrlInspector.Services;
 
 public class UrlInspectorService(
     IContentService contentService,
+    IIdKeyMap idKeyMap,
     IPublishedUrlInfoProvider urlInfoProvider,
     IRedirectUrlService redirectUrlService,
     IHostingEnvironment hostingEnvironment,
@@ -17,7 +19,7 @@ public class UrlInspectorService(
 
     public async Task<UrlInspectorResponse?> InspectAsync(Guid key)
     {
-        var content = contentService.GetById(key);
+        var content = GetContent(key);
         if (content is null) return null;
 
         var infos = await urlInfoProvider.GetAllAsync(content);
@@ -118,12 +120,20 @@ public class UrlInspectorService(
 
     private async Task<string?> ResolveDestinationAsync(Guid targetKey, string? culture)
     {
-        var target = contentService.GetById(targetKey);
+        var target = GetContent(targetKey);
         if (target is null) return null;
 
         var infos = (await urlInfoProvider.GetAllAsync(target)).Where(i => i.Url is not null).ToList();
         var info = infos.FirstOrDefault(i => i.Culture == culture) ?? infos.FirstOrDefault();
         return info?.Url?.ToString() is { Length: > 0 } u ? Absolutize(u) : null;
+    }
+
+    // Not IContentService.GetById(Guid): Umbraco 18 moved it to IContentServiceBase<T>, so a call compiled against
+    // Umbraco 17 fails there with a MissingMethodException. GetById(int) is on IContentService in both.
+    private IContent? GetContent(Guid key)
+    {
+        var id = idKeyMap.GetIdForKey(key, UmbracoObjectTypes.Document);
+        return id.Success ? contentService.GetById(id.Result) : null;
     }
 
     private static bool IsHttp(Uri uri) => uri.Scheme == Uri.UriSchemeHttp || uri.Scheme == Uri.UriSchemeHttps;
