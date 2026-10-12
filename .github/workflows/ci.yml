@@ -55,6 +55,14 @@ jobs:
         working-directory: src/${{ env.PACKAGE }}/Client
         run: npm audit --omit=dev --audit-level=high
 
+      # The package supports Umbraco 17 and 18 and is built against 17.0.0. Also compile it against the newest
+      # Umbraco 18, and install it in the TestSite on Umbraco 18 like a real site, failing on known advisories there
+      # too. Runs after the vulnerability check above, which reads the TestSite's Umbraco 17 restore.
+      - name: Build against Umbraco 18
+        run: |
+          dotnet build src/${{ env.PACKAGE }} -c Release -p:SkipClientBuild=true "-p:UmbracoVersion=18.*"
+          dotnet build tests/TestSite -c Release -p:SkipClientBuild=true "-p:TestSiteUmbracoVersion=18.*" -p:FailOnVulnerablePackages=true
+
       - uses: actions/upload-artifact@v4
         with:
           name: nupkg
