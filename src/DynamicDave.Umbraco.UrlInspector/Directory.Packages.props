@@ -6,7 +6,7 @@
     <!-- Supported Umbraco versions. The package is built against the lowest version in the range; the site that
          installs it resolves the actual version. Override to compile against another version, e.g.
          dotnet build -p:UmbracoVersion=18.2.1 -->
-    <UmbracoVersion Condition="'$(UmbracoVersion)' == ''">[17.0.0, 19.0.0)</UmbracoVersion>
+    <UmbracoVersion Condition="'$(UmbracoVersion)' == ''">[17.7.1, 19.0.0)</UmbracoVersion>
   </PropertyGroup>
   
   <ItemGroup>
