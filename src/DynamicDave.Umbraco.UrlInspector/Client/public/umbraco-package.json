@@ -1,7 +1,7 @@
 {
   "id": "DynamicDave.Umbraco.UrlInspector",
   "name": "DynamicDave.Umbraco.UrlInspector",
-  "version": "18.0.1",
+  "version": "18.0.2",
   "allowTelemetry": true,
   "AuthorDetails": {
     "Name": "Dynamic Dave",
